@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+// Function to display available movies
+void displayMovies() {
+    printf("Available Movies:\n");
+    printf("1. Movie A - $10\n");
+    printf("2. Movie B - $12\n");
+    printf("3. Movie C - $8\n");
+}
+
+// Function to handle ticket booking
+void bookTickets(int *movieChoice, int *numTickets) {
+    printf("Enter the movie number (1-3): ");
+    scanf("%d", movieChoice);
+
+    printf("Enter the number of tickets: ");
+    scanf("%d", numTickets);
+}
+
+// Function to calculate total cost based on movie choice and number of tickets
+float calculateTotal(int movieChoice, int numTickets) {
+    float price = 0.0;
+    
+    // Determine the price of the chosen movie
+    switch (movieChoice) {
+        case 1:
+            price = 10.0;
+            break;
+        case 2:
+            price = 12.0;
+            break;
+        case 3:
+            price = 8.0;
+            break;
+        default:
+            printf("Invalid movie choice!\n");
+            return 0.0;
+    }
+    
+    // Calculate total cost
+    return price * numTickets;
+}
+
+int main() {
+    int movieChoice, numTickets;
+    float totalCost;
+
+    // Display available movies
+    displayMovies();
+
+    // Book tickets
+    bookTickets(&movieChoice, &numTickets);
+
+    // Calculate and display total cost
+    totalCost = calculateTotal(movieChoice, numTickets);
+    if (totalCost > 0.0) {
+        printf("Total cost for %d ticket(s): $%.2f\n", numTickets, totalCost);
+    }
+
+    return 0;
+}
